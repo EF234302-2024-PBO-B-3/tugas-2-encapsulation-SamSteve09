@@ -3,7 +3,7 @@ using Encapsulation.Employment;
 using System;
 using Encapsulation.Calendar;
 using Encapsulation.Banking;
-
+using Encapsulation.Extra;
 namespace Encapsulation;
 
 public class Program
@@ -52,7 +52,14 @@ public class Program
         account.Withdraw(200.0);
         Console.WriteLine($"Balance after withdrawal: {account.GetBalance()}");
 
-        // Extra
+        // Extra (Tax)
+
+        Tax tax = new Tax("John Smith", "1234567890101112", 6000000);
+        Tax tax2 = new Tax("Mary Sue", "1234567890101113", 600000000);
+        Console.WriteLine($"Yearly Salary of {tax.FullName} : Rp.{tax.GetYearlySalary()}");
+        Console.WriteLine($"Yearly Salary of {tax2.FullName} : Rp.{tax2.GetYearlySalary()}");
+        Console.WriteLine($"{tax.FullName}'s tax : Rp.{tax.GetTaxAmount()} ({tax.GetTaxBracket()}% tax rate)");
+        Console.WriteLine($"{tax2.FullName}'s tax : Rp.{tax2.GetTaxAmount()} ({tax2.GetTaxBracket()}% tax rate)");
 
     }
 }
